@@ -1,7 +1,9 @@
 const mocha = require("mocha")
 const chai = require("chai")
 const utils = require("../utils")
+const { assert } = require("chai")
 const expect = chai.expect
+
 
 // ========================================================
 // NOTE: https://mochajs.org/#arrow-functions
@@ -26,6 +28,23 @@ it("should say hello", function() {
 // This is called "Red-Green-Refactor"
 // ========================================================
 
+it("Is area", function() {
+  const area = utils.area()
+  assert(area)
+  assert.isNumber(area)
+})
+
+it("Perimeter ", function() {
+  const per  = utils.perimeter()
+  assert(per)
+  assert.isNumber(per)
+})
+
+it("Is circle area", function() {
+  const cirArea = utils.circleArea()
+  assert(cirArea)
+  assert.isNumber(cirArea)
+})
 
 
 
@@ -50,13 +69,30 @@ it("Should create a new (object) Item with name and price", function() {
   expect(item).to.have.property("quantity", 1)
 })
 
-it("Should return an array containing all items in cart")
+it("Should return an array containing all items in cart", function(){
+  const item = utils.getShoppingCart()
+  expect(item).to.be.a("array")
+})
 
-it("Should add a new item to the shopping cart")
+it("Should add a new item to the shopping cart", function(){
+  const item = utils.addItemToCart("apple")
+  expect(item).to.be.a("object")
+  expect(item).to.have.property("item","apple")
+})
 
-it("Should return the number of items in the cart")
+it("Should return the number of items in the cart", function(){
+  const item = utils.getNumItemsInCart()
+  expect()
+})
 
 it("Should remove items from cart")
+  const item = utils.addItemToCart("apple")
+  expect(item).to.be.a("object")
+  expect(item).to.have.property("item","apple")
+  const items = utils.removeItemFromCart("apple")
+  const num = utils.getNumItemsInCart()
+  expect(num).to.have.property(0)
+  
 
 // ========================================================
 // Stretch Challenges
